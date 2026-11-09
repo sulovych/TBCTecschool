@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ka" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ლუკა სულაძე | პორტფოლიო</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Noto Sans Georgian & Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Noto+Sans+Georgian:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- გარე სტილების და რესპონსივის ფაილი (style.css) -->
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans Georgian"', 'system-ui', 'sans-serif'],
+                        mono: ['"Fira Code"', 'monospace'],
+                    },
+                    colors: {
+                        primary: '#6366f1',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body
+    class="bg-slate-950 text-slate-200 min-h-screen selection:bg-indigo-500 selection:text-white relative overflow-x-hidden antialiased">
+
+    <!-- ფონური დეკორატიული განათებები -->
+    <div
+        class="fixed top-0 left-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none -z-10">
+    </div>
+    <div
+        class="fixed top-1/2 right-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-cyan-600/10 rounded-full blur-3xl pointer-events-none -z-10">
+    </div>
+    <div
+        class="fixed bottom-0 left-1/3 w-72 sm:w-96 h-72 sm:h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none -z-10">
+    </div>
+
+    <!-- ნავიგაცია -->
+    <header
+        class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/90 border-b border-slate-800/80 transition-all duration-300">
+        <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- ლოგო -->
+            <a href="#home" class="flex items-center gap-2.5 group">
+                <span
+                    class="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-600 to-cyan-400 flex items-center justify-center font-mono font-bold text-white text-sm shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform">
+                    &lt;/&gt;
+                </span>
+                <span
+                    class="font-bold text-base sm:text-lg text-white tracking-tight group-hover:text-indigo-400 transition-colors">
+                    ლუკა სულაძე
+                </span>
+            </a>
+
+            <!-- დესკტოპ მენიუ (იმართება style.css-ის @media-ით) -->
+            <ul class="desktop-nav items-center gap-1 lg:gap-2 text-sm font-medium text-slate-300">
+                <li>
+                    <a href="#home"
+                        class="px-3 py-2 rounded-lg hover:text-white hover:bg-slate-800/60 transition-colors">მთავარი</a>
+                </li>
+                <li>
+                    <a href="#about"
+                        class="px-3 py-2 rounded-lg hover:text-white hover:bg-slate-800/60 transition-colors">ჩემ
+                        შესახებ</a>
+                </li>
+                <li>
+                    <a href="#skills"
+                        class="px-3 py-2 rounded-lg hover:text-white hover:bg-slate-800/60 transition-colors">უნარები</a>
+                </li>
+                <li>
+                    <a href="#projects"
+                        class="px-3 py-2 rounded-lg hover:text-white hover:bg-slate-800/60 transition-colors">პროექტები</a>
+                </li>
+                <li>
+                    <a href="#contact"
+                        class="px-3.5 py-1.5 rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-500 transition-all shadow-md shadow-indigo-600/20">კონტაქტი</a>
+                </li>
+            </ul>
+
+            <!-- მობილური ბურგერ მენიუს ღილაკი (იმართება style.css-ის @media-ით) -->
+            <button id="mobile-menu-btn" type="button" aria-label="მენიუს გახსნა" aria-expanded="false"
+                class="mobile-menu-btn items-center justify-center p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/80 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors">
+                <!-- ბურგერ აიქონი (3 ხაზი) -->
+                <svg id="menu-icon-bars" class="w-6 h-6 block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+                <!-- დახურვის აიქონი (X) -->
+                <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </nav>
+
+        <!-- ჩამოსაშლელი მობილური მენიუ (იმართება style.css-ის @media და .is-open კლასით) -->
+        <div id="mobile-menu"
+            class="mobile-menu border-t border-slate-800/80 bg-slate-950/95 backdrop-blur-xl px-4 py-4 space-y-2 shadow-2xl transition-all">
+            <ul class="flex flex-col space-y-1 font-medium text-slate-300 text-base">
+                <li>
+                    <a href="#home"
+                        class="mobile-nav-link flex items-center justify-between px-3.5 py-2.5 rounded-xl hover:text-white hover:bg-slate-900 transition-colors">
+                        <span>მთავარი</span>
+                        <span class="text-xs text-slate-500 font-mono">01</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#about"
+                        class="mobile-nav-link flex items-center justify-between px-3.5 py-2.5 rounded-xl hover:text-white hover:bg-slate-900 transition-colors">
+                        <span>ჩემ შესახებ</span>
+                        <span class="text-xs text-slate-500 font-mono">02</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#skills"
+                        class="mobile-nav-link flex items-center justify-between px-3.5 py-2.5 rounded-xl hover:text-white hover:bg-slate-900 transition-colors">
+                        <span>უნარები</span>
+                        <span class="text-xs text-slate-500 font-mono">03</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#projects"
+                        class="mobile-nav-link flex items-center justify-between px-3.5 py-2.5 rounded-xl hover:text-white hover:bg-slate-900 transition-colors">
+                        <span>პროექტები</span>
+                        <span class="text-xs text-slate-500 font-mono">04</span>
+                    </a>
+                </li>
+                <li class="pt-2">
+                    <a href="#contact"
+                        class="mobile-nav-link flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl bg-indigo-600 text-white font-medium hover:bg-indigo-500 transition-colors shadow-lg shadow-indigo-600/25">
+                        <span>კონტაქტი</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="main-container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-16 sm:space-y-24">
+
+        <!-- მთავარი გვერდი / Banner -->
+        <section id="home" class="pt-4 sm:pt-14 pb-4 sm:pb-8">
+            <div class="max-w-3xl">
+                <!-- Status Badge -->
+                <div
+                    class="status-badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-xs text-indigo-300 mb-6 font-mono max-w-full">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                    <span class="truncate">Available for collaboration &amp; projects</span>
+                </div>
+
+                <header>
+                    <h1
+                        class="hero-title text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-4">
+                        გამარჯობა, მე ვარ <br class="hidden sm:inline">
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-400 to-purple-400">
+                            ლუკა სულაძე
+                        </span>
+                    </h1>
+                    <p
+                        class="hero-subtitle text-lg sm:text-2xl font-mono text-indigo-300/90 mb-5 sm:mb-6 font-medium break-words">
+                        Software Developer &amp; Programming Student
+                    </p>
+                </header>
+
+                <p
+                    class="hero-desc text-slate-300 sm:text-slate-400 text-base sm:text-xl leading-relaxed mb-8 max-w-2xl">
+                    სპეციალიზებული ვარ დაბალი დონის პროგრამირებაში, დესკტოპ ინსტრუმენტების შექმნასა და სისტემურ
+                    ოპტიმიზაციაში.
+                </p>
+
+                <!-- Call to Action ღილაკები -->
+                <div class="hero-buttons flex gap-3 sm:gap-4 items-stretch sm:items-center">
+                    <a href="#projects"
+                        class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 text-center">
+                        <span>პროექტების ნახვა</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href="#contact"
+                        class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:border-slate-700 hover:bg-slate-800 transition-all font-semibold text-center">
+                        <span>დამიკავშირდით</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-slate-800/60">
+
+        <!-- ჩემ შესახებ -->
+        <section id="about" class="scroll-mt-20 sm:scroll-mt-24">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="w-2.5 h-7 rounded-full bg-indigo-500 inline-block"></span>
+                <h2 class="section-title text-2xl sm:text-3xl font-bold text-white tracking-tight">ჩემ შესახებ</h2>
+            </div>
+
+            <div
+                class="about-card p-5 sm:p-8 rounded-2xl bg-slate-900/50 border border-slate-800/80 backdrop-blur-sm shadow-xl">
+                <p class="text-slate-200 text-base sm:text-lg leading-relaxed mb-6">
+                    ვსწავლობ პროგრამირებას და პარალელურად აქტიურად ვარ დაკავებული პროგრამული უზრუნველყოფის
+                    დეველოპმენტით. ჩემი ინტერესის სფეროა სკრიპტინგი, მეხსიერების მანიპულაციები, UI/UX ინტერფეისების
+                    აგება და დესკტოპ ავტომატიზაცია.
+                </p>
+
+                <!-- მახასიათებლები / მიმართულებები (Grid იმართება style.css-ით) -->
+                <div class="features-grid grid gap-3 sm:gap-4 pt-4 border-t border-slate-800/60 font-mono text-sm">
+                    <div class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/60">
+                        <span class="text-indigo-400 text-xl shrink-0">⚡</span>
+                        <div class="min-w-0">
+                            <div class="text-slate-400 text-xs">ფოკუსი</div>
+                            <div class="text-slate-200 font-semibold font-sans truncate">დაბალი დონე &amp; C++</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/60">
+                        <span class="text-cyan-400 text-xl shrink-0">🛠️</span>
+                        <div class="min-w-0">
+                            <div class="text-slate-400 text-xs">მიმართულება</div>
+                            <div class="text-slate-200 font-semibold font-sans truncate">Lua, Automation, Tools</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/60">
+                        <span class="text-purple-400 text-xl shrink-0">🔍</span>
+                        <div class="min-w-0">
+                            <div class="text-slate-400 text-xs">ინტერესი</div>
+                            <div class="text-slate-200 font-semibold font-sans truncate">Memory &amp; Reverse Eng</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-slate-800/60">
+
+        <!-- უნარები (Skills) -->
+        <section id="skills" class="scroll-mt-20 sm:scroll-mt-24">
+            <div class="flex items-center gap-3 mb-6 sm:mb-8">
+                <span class="w-2.5 h-7 rounded-full bg-cyan-500 inline-block"></span>
+                <h2 class="section-title text-2xl sm:text-3xl font-bold text-white tracking-tight">ტექნიკური უნარები
+                </h2>
+            </div>
+
+            <div class="skills-grid grid gap-5 sm:gap-6">
+                <!-- პროგრამირების ენები & ტექნოლოგიები -->
+                <article
+                    class="skill-card p-5 sm:p-7 rounded-2xl bg-slate-900/50 border border-slate-800/80 backdrop-blur-sm shadow-xl flex flex-col justify-between hover:border-slate-700 transition-colors">
+                    <div>
+                        <div class="flex items-center gap-2.5 mb-5">
+                            <span class="p-2 rounded-lg bg-indigo-500/10 text-indigo-400 shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                </svg>
+                            </span>
+                            <h3 class="text-lg font-bold text-white">პროგრამირების ენები &amp; ტექნოლოგიები</h3>
+                        </div>
+
+                        <ul class="space-y-3 text-sm">
+                            <li
+                                class="skill-item p-3 sm:p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/60 flex">
+                                <span class="font-semibold text-indigo-400 font-mono text-xs sm:text-sm shrink-0">Lua
+                                    5.1 / LuaJIT:</span>
+                                <span class="text-slate-300 text-xs sm:text-sm leading-relaxed">MoonLoader სკრიპტები,
+                                    SAMPFUNCS, SAMP.Lua, Dear ImGui (mimgui)</span>
+                            </li>
+                            <li
+                                class="skill-item p-3 sm:p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/60 flex">
+                                <span
+                                    class="font-semibold text-cyan-400 font-mono text-xs sm:text-sm shrink-0">C++:</span>
+                                <span class="text-slate-300 text-xs sm:text-sm leading-relaxed">Dynamic-Link Libraries
+                                    (DLL), Memory hooks &amp; patches, Visual Studio</span>
+                            </li>
+                            <li
+                                class="skill-item p-3 sm:p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/60 flex">
+                                <span
+                                    class="font-semibold text-emerald-400 font-mono text-xs sm:text-sm shrink-0">Python
+                                    3:</span>
+                                <span class="text-slate-300 text-xs sm:text-sm leading-relaxed">დესკტოპ ავტომატიზაცია,
+                                    Tkinter, pynput, discord.py</span>
+                            </li>
+                            <li
+                                class="skill-item p-3 sm:p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/60 flex">
+                                <span
+                                    class="font-semibold text-amber-400 font-mono text-xs sm:text-sm shrink-0">Pawn:</span>
+                                <span class="text-slate-300 text-xs sm:text-sm leading-relaxed">SA-MP Gamemodes &amp;
+                                    Filterscripts (Pawn compiler 3.10.10)</span>
+                            </li>
+                            <li
+                                class="skill-item p-3 sm:p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/60 flex">
+                                <span
+                                    class="font-semibold text-rose-400 font-mono text-xs sm:text-sm shrink-0">AutoHotkey:</span>
+                                <span class="text-slate-300 text-xs sm:text-sm leading-relaxed">მაკროსები და
+                                    ავტომატიზაციის სკრიპტები</span>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- დამატებითი უნარები -->
+                <article
+                    class="skill-card p-5 sm:p-7 rounded-2xl bg-slate-900/50 border border-slate-800/80 backdrop-blur-sm shadow-xl flex flex-col justify-between hover:border-slate-700 transition-colors">
+                    <div>
+                        <div class="flex items-center gap-2.5 mb-5">
+                            <span class="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                                    </path>
+                                </svg>
+                            </span>
+                            <h3 class="text-lg font-bold text-white">დამატებითი უნარები</h3>
+                        </div>
+
+                        <ul class="space-y-3 text-sm">
+                            <li
+                                class="flex items-start gap-3 p-3.5 sm:p-4 rounded-xl bg-slate-950/60 border border-slate-800/60">
+                                <span class="text-emerald-400 mt-0.5 text-base shrink-0">✓</span>
+                                <div>
+                                    <strong class="text-white block font-medium text-sm sm:text-base">კოდის ოპტიმიზაცია
+                                        და დებაგინგი</strong>
+                                    <span
+                                        class="text-slate-300 text-xs sm:text-sm leading-relaxed block mt-0.5">ეფექტური
+                                        ალგორითმები, მეხსიერების მენეჯმენტი და შეცდომების დროული აღმოჩენა.</span>
+                                </div>
+                            </li>
+                            <li
+                                class="flex items-start gap-3 p-3.5 sm:p-4 rounded-xl bg-slate-950/60 border border-slate-800/60">
+                                <span class="text-cyan-400 mt-0.5 text-base shrink-0">✓</span>
+                                <div>
+                                    <strong class="text-white block font-medium text-sm sm:text-base">Reverse
+                                        Engineering-ის ბაზისები &amp; Deobfuscation</strong>
+                                    <span
+                                        class="text-slate-300 text-xs sm:text-sm leading-relaxed block mt-0.5">ბინარული
+                                        ფაილების ანალიზი, მეხსიერების სტრუქტურების კვლევა და ლოგიკის ამოხსნა.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <hr class="border-slate-800/60">
+
+        <!-- პროექტები -->
+        <section id="projects" class="scroll-mt-20 sm:scroll-mt-24">
+            <div class="flex items-center gap-3 mb-6 sm:mb-8">
+                <span class="w-2.5 h-7 rounded-full bg-purple-500 inline-block"></span>
+                <h2 class="section-title text-2xl sm:text-3xl font-bold text-white tracking-tight">პროექტები</h2>
+            </div>
+
+            <div class="projects-grid grid gap-5 sm:gap-6">
+                <!-- პროექტი 1 -->
+                <article
+                    class="project-card group p-5 sm:p-6 rounded-2xl bg-slate-900/50 border border-slate-800/80 backdrop-blur-sm shadow-xl flex flex-col justify-between hover:border-indigo-500/50 hover:-translate-y-1 transition-all duration-300">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span
+                                class="text-xs font-mono px-2.5 py-1 rounded-md bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">Lua
+                                / MoonLoader</span>
+                            <span class="text-slate-500 group-hover:text-indigo-400 transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-indigo-300 transition-colors">
+                            MoonLoader Script Auto-Updater
+                        </h3>
+                        <p class="text-slate-300 sm:text-slate-400 text-sm leading-relaxed">
+                            ღია კოდის მქონე ინსტრუმენტი Lua სკრიპტების ვერსიების შესამოწმებლად და ავტონომიური
+                            განახლებისთვის.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- პროექტი 2 -->
+                <article
+                    class="project-card group p-5 sm:p-6 rounded-2xl bg-slate-900/50 border border-slate-800/80 backdrop-blur-sm shadow-xl flex flex-col justify-between hover:border-cyan-500/50 hover:-translate-y-1 transition-all duration-300">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span
+                                class="text-xs font-mono px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">CEF
+                                / Lua Mod</span>
+                            <span class="text-slate-500 group-hover:text-cyan-400 transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">
+                            EDRP Pause Menu Switcher
+                        </h3>
+                        <p class="text-slate-300 sm:text-slate-400 text-sm leading-relaxed">
+                            MoonLoader Lua მოდიფიკაცია GTA SA-ს სტანდარტულ და custom CEF პაუზის მენიუებს შორის
+                            გადასართავად.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- პროექტი 3 -->
+                <article
+                    class="project-card group p-5 sm:p-6 rounded-2xl bg-slate-900/50 border border-slate-800/80 backdrop-blur-sm shadow-xl flex flex-col justify-between hover:border-purple-500/50 hover:-translate-y-1 transition-all duration-300">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span
+                                class="text-xs font-mono px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 border border-purple-500/20">Python
+                                / Tkinter</span>
+                            <span class="text-slate-500 group-hover:text-purple-400 transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">
+                            Desktop Automation &amp; Mute Bot
+                        </h3>
+                        <p class="text-slate-300 sm:text-slate-400 text-sm leading-relaxed">
+                            Python-ზე აგებული დესკტოპ აპლიკაცია Tkinter-ითა და Discord ბოტით, რომელიც მართავს ხმოვან
+                            არხებს hotkey-ების გამოყენებით.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <hr class="border-slate-800/60">
+
+        <!-- კონტაქტი -->
+        <section id="contact" class="scroll-mt-20 sm:scroll-mt-24">
+            <div class="flex items-center gap-3 mb-6 sm:mb-8">
+                <span class="w-2.5 h-7 rounded-full bg-emerald-500 inline-block"></span>
+                <h2 class="section-title text-2xl sm:text-3xl font-bold text-white tracking-tight">კონტაქტი</h2>
+            </div>
+
+            <div class="contact-layout grid gap-6 sm:gap-8 items-start">
+                <!-- საკონტაქტო ინფო -->
+                <div class="space-y-4 sm:space-y-6">
+                    <p class="text-slate-300 text-base leading-relaxed">
+                        დამიკავშირდით პროექტების ან თანამშრომლობისთვის:
+                    </p>
+
+                    <address class="not-italic space-y-3 sm:space-y-4">
+                        <a href="mailto:lsuladze1337@gmail.com"
+                            class="contact-link flex items-center gap-3.5 p-3.5 sm:p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-800/60 transition-all group">
+                            <span
+                                class="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 group-hover:scale-110 transition-transform shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                            </span>
+                            <div class="min-w-0 flex-1">
+                                <span class="text-xs text-slate-400 block">Email</span>
+                                <span
+                                    class="contact-link-text text-white font-medium text-xs sm:text-sm truncate block group-hover:text-indigo-400 transition-colors">lsuladze1337@gmail.com</span>
+                            </div>
+                        </a>
+
+                        <a href="https://github.com/sulovych" target="_blank" rel="noopener noreferrer"
+                            class="contact-link flex items-center gap-3.5 p-3.5 sm:p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-800/60 transition-all group">
+                            <span
+                                class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-white group-hover:scale-110 transition-transform shrink-0">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z">
+                                    </path>
+                                </svg>
+                            </span>
+                            <div class="min-w-0 flex-1">
+                                <span class="text-xs text-slate-400 block">GitHub</span>
+                                <span
+                                    class="contact-link-text text-white font-medium text-xs sm:text-sm truncate block group-hover:text-indigo-400 transition-colors">github.com/sulovych</span>
+                            </div>
+                        </a>
+                    </address>
+                </div>
+
+                <!-- ფორმა -->
+                <div
+                    class="contact-form-wrapper p-5 sm:p-8 rounded-2xl bg-slate-900/50 border border-slate-800/80 backdrop-blur-sm shadow-xl">
+                    <h3 class="text-lg font-bold text-white mb-5 sm:mb-6 flex items-center gap-2">
+                        <span>✉️</span> შეტყობინების გაგზავნა
+                    </h3>
+
+                    <form action="#" method="post" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-slate-300 mb-1.5">სახელი:</label>
+                            <input type="text" id="name" name="name" required placeholder="თქვენი სახელი"
+                                class="w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-base sm:text-sm">
+                        </div>
+
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-slate-300 mb-1.5">ელ-ფოსტა:</label>
+                            <input type="email" id="email" name="email" required placeholder="name@example.com"
+                                class="w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-base sm:text-sm">
+                        </div>
+
+                        <div>
+                            <label for="message"
+                                class="block text-sm font-medium text-slate-300 mb-1.5">შეტყობინება:</label>
+                            <textarea id="message" name="message" rows="4" required placeholder="თქვენი შეტყობინება..."
+                                class="w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-base sm:text-sm resize-none"></textarea>
+                        </div>
+
+                        <div>
+                            <button type="submit"
+                                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition-all shadow-lg shadow-indigo-600/25 hover:shadow-indigo-600/40 cursor-pointer">
+                                <span>გაგზავნა</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ფუტერი -->
+    <footer class="mt-16 sm:mt-20 border-t border-slate-800/80 bg-slate-950/60 backdrop-blur-md py-6 sm:py-8">
+        <div
+            class="footer-content max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 text-xs sm:text-sm text-slate-500">
+            <p>&copy; 2026 ლუკა სულაძე. ყველა უფლება დაცულია.</p>
+            <p class="font-mono text-xs text-slate-600">Built with Tailwind CSS &amp; style.css</p>
+        </div>
+    </footer>
+
+    <!-- მობილური მენიუს სკრიპტი -->
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconBars = document.getElementById('menu-icon-bars');
+        const iconClose = document.getElementById('menu-icon-close');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function toggleMenu() {
+            const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+            menuBtn.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('is-open');
+            iconBars.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+
+        // ნებისმიერ მობილურ ბმულზე დაკლიკებისას მენიუს დახურვა
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('is-open')) {
+                    toggleMenu();
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
